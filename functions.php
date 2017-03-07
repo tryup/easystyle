@@ -22,6 +22,10 @@ function wrap_get_option($k)
     return get_settings($k);
   }
 }
+function fobnn_get_option($k)
+{
+  return wrap_get_option("fobnn_".$k);
+}
 
 add_filter( 'wp_page_menu_args', 'tangstyle_page_menu_args' );
 if ( ! function_exists( 'tangstyle_content_nav' ) ) :

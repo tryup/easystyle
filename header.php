@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <?php if ( is_home() ) { ?>
-<title><?php echo stripslashes(get_option('tang_title')); ?></title>
+<title><?php echo stripslashes(fobnn_get_option('title')); ?></title>
 <?php } ?>
 <?php if ( is_search() ) { ?>
 <title>搜索结果 - <?php bloginfo('name'); ?></title>
@@ -56,8 +56,8 @@ if ( is_single() ){
 <meta name="keywords" content="<?php echo rtrim($keywords,','); ?>" />
 <?php } ?>
 <?php if ( is_home() ) { ?>
-<meta name="description" content="<?php echo stripslashes(get_option('tang_description')); ?>" />
-<meta name="keywords" content="<?php echo stripslashes(get_option('tang_keywords')); ?>" />
+<meta name="description" content="<?php echo stripslashes(fobnn_get_option('description')); ?>" />
+<meta name="keywords" content="<?php echo stripslashes(fobnn_get_option('keywords')); ?>" />
 <?php } ?>
 <link rel="shortcut icon" href="<?php bloginfo('template_directory'); ?>/images/favicon.ico" type="image/x-icon" />
 <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/bootstrap.min.css">
@@ -79,16 +79,16 @@ wp_head();
   <h3 id="name"><?php bloginfo('name'); ?></h3>
   <div class="sns">
     <a href="<?php bloginfo('rss2_url'); ?>" target="_blank" rel="nofollow" title="RSS"><i class="fa fa-rss" aria-hidden="true"></i></a>
-    <?php if (get_option('tang_weibo') == '显示') { ?>
-    <a href="<?php echo stripslashes(get_option('tang_weibo_url')); ?>" target="_blank" rel="nofollow" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a>
+    <?php if (fobnn_get_option('weibo') == '显示') { ?>
+    <a href="<?php echo stripslashes(fobnn_get_option('weibo_url')); ?>" target="_blank" rel="nofollow" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a>
     <?php { echo ''; } ?>
     <?php } else { } ?>
-    <?php if (get_option('tang_twitter') == '显示') { ?>
-    <a href="<?php echo stripslashes(get_option('tang_twitter_url')); ?>" target="_blank" rel="nofollow" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <?php if (fobnn_get_option('twitter') == '显示') { ?>
+    <a href="<?php echo stripslashes(fobnn_get_option('twitter_url')); ?>" target="_blank" rel="nofollow" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
     <?php { echo ''; } ?>
     <?php } else { } ?>
-    <?php if (get_option('tang_facebook') == '显示') { ?>
-    <a href="<?php echo stripslashes(get_option('tang_facebook_url')); ?>" target="_blank" rel="nofollow" title="Facebook"><i class="fa fa-facebook-square" aria-hidden="true"></i></i></a>
+    <?php if (get_option('acebook') == '显示') { ?>
+    <a href="<?php echo stripslashes(fobnn_get_option('facebook_url')); ?>" target="_blank" rel="nofollow" title="Facebook"><i class="fa fa-facebook-square" aria-hidden="true"></i></i></a>
     <?php { echo ''; } ?>
     <?php } else { } ?>
   </div>
