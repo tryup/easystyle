@@ -210,8 +210,8 @@ add_action('comment_post', 'comment_mail_notify');
 
 ?>
 <?php
-$themename = "JieStyle";
-$shortname = "tang";
+$themename = "JieStylePlus";
+$shortname = "fobnn";
 $options = array (
 	array("name" => "标题（Title)",
 	"id" => $shortname."_title",
