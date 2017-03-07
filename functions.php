@@ -3,6 +3,26 @@ function tangstyle_page_menu_args( $args ) {
 	$args['show_home'] = true;
 	return $args;
 }
+$g_hasgetoption = false;
+if( function_exists("get_option") )
+{
+  global $g_hasgetoption;
+  $g_hasgetoption = true;
+}
+
+function wrap_get_option($k)
+{
+  global $g_hasgetoption;
+  if($g_hasgetoption)
+  {
+    return get_option($k);
+  }
+  else
+  {
+    return get_settings($k);
+  }
+}
+
 add_filter( 'wp_page_menu_args', 'tangstyle_page_menu_args' );
 if ( ! function_exists( 'tangstyle_content_nav' ) ) :
 register_nav_menus(array('header-menu' => __( 'JieStyle导航菜单' ),));
@@ -311,7 +331,7 @@ function mytheme_admin() {
       <div class="setup">
         <h3><?php echo $value['name']; ?></h3>
         <div class="value">
-          <input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_settings( $value['id'] ) != "") { echo stripslashes(get_settings( $value['id']) ); } else { echo $value['std']; } ?>" />
+          <input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( wrap_get_option( $value['id'] ) != "") { echo stripslashes(wrap_get_option( $value['id']) ); } else { echo $value['std']; } ?>" />
         </div>
         <div class="explain"><?php echo $value['explain']; ?></div>
       </div>
@@ -319,7 +339,7 @@ function mytheme_admin() {
       <div class="setup">
         <h3><?php echo $value['name']; ?></h3>
         <div class="value">
-          <textarea name="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" <?php echo $value['css']; ?> ><?php if ( get_settings( $value['id'] ) != "") { echo stripslashes(get_settings( $value['id']) ); } else { echo $value['std']; } ?>
+          <textarea name="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" <?php echo $value['css']; ?> ><?php if ( wrap_get_option( $value['id'] ) != "") { echo stripslashes(wrap_get_option( $value['id']) ); } else { echo $value['std']; } ?>
 </textarea>
         </div>
         <div class="explain"><?php echo $value['explain']; ?></div>
@@ -330,7 +350,7 @@ function mytheme_admin() {
         <div class="value">
           <select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
             <?php foreach ($value['options'] as $option) { ?>
-            <option value="<?php echo $option;?>" <?php if (get_settings( $value['id'] ) == $option) { echo 'selected="selected"'; } ?>>
+            <option value="<?php echo $option;?>" <?php if (wrap_get_option( $value['id'] ) == $option) { echo 'selected="selected"'; } ?>>
             <?php
 		if ((empty($option) || $option == '' ) && isset($value['option'])) {
 			echo $value['option'];
