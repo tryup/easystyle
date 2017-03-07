@@ -243,6 +243,7 @@ $options = array (
 	"id" => $shortname."_tongji",
 	"type" => "textarea",
 	"css" => "class='h80px'",
+  "std" => "",
 	"explain" => "页面底部可以显示第三方统计<br>您可以放一个或者多个统计代码"
 	),
 	array("name" => "是否显示新浪微博",
